@@ -1,0 +1,11 @@
+font-size = 18
+
+theme = rose-pine
+background = #18181b
+
+window-padding-color = background
+window-padding-balance = true
+window-padding-x = 0
+window-padding-y = 0
+
+
