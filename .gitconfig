@@ -1,0 +1,33 @@
+[user]
+  email = thomasjsolecki@gmail.com
+  name = Thomas Solecki
+
+[gui]
+  editor = "nvim"
+
+[color]
+  ui = auto
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+
+[alias]
+  st = status --short
+  cm = commit
+  cma = commit --amend
+  df = diff
+  dfs = diff --staged
+  dfst = diff --stat
+  dfsst = diff --staged --stat
+  co = checkout
+  br = branch
+  rfm = push origin HEAD:master
+  rbi = rebase -i
+  rbc = rebase --continue
+  lg = log --oneline
+[core]
+  editor = nvim
+  pager = less -FRSX
