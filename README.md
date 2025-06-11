@@ -18,3 +18,12 @@ For MacOS run:
 ```shell
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 ```
+
+### Install tmux
+
+For MacOS run:
+```shell
+brew install tmux
+```
+
+To install plugins, run tmux and type `ctl+b I`
