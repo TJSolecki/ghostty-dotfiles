@@ -40,3 +40,12 @@ default respects your .gitignore.
 ```shell
 brew install ripgrep
 ```
+
+### Install fzf
+
+Fzf is a fuzzy-finder for the cli.
+
+For MacOS Run:
+```shell
+brew install fzf
+```
