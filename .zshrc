@@ -17,6 +17,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light MichaelAquilina/zsh-auto-notify
+zinit light Aloxaf/fzf-tab
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -46,10 +47,11 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Case insenstive matching
+# Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # auto-notify config
 export AUTO_NOTIFY_WHITELIST=("gw test" "gw pkg" "pnpm exec" "pnpx" "pnpm run build" "pnpm run lint" "pnpm run check")
