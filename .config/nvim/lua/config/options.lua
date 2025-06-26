@@ -68,3 +68,5 @@ vim.opt.isfname:append "@-@"
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "120"
+
+vim.api.nvim_set_option_value("winborder", "rounded", {})

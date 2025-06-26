@@ -104,5 +104,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set("n", "<leader>sn", function()
             builtin.find_files { cwd = vim.fn.stdpath "config" }
         end, { desc = "[S]earch [N]eovim files" })
+
+        -- Exclude Telescope from receiving the rounded border
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "TelescopeFindPre",
+            callback = function()
+                vim.opt_local.winborder = "none"
+                vim.api.nvim_create_autocmd("WinLeave", {
+                    once = true,
+                    callback = function()
+                        vim.opt_local.winborder = "rounded"
+                    end,
+                })
+            end,
+        })
     end,
 }
