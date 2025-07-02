@@ -1,9 +1,9 @@
 -- Initialize autogroups
 require "config.autogroups"
--- Set keymaps
-require "config.keymaps"
 -- Set options
 require "config.options"
+-- Set keymaps
+require "config.keymaps"
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

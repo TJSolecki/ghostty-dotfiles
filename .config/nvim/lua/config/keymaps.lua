@@ -31,6 +31,30 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "[V]iew [D]iagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+---@param jumpCount number
+local function jumpWithVirtLineDiags(jumpCount)
+    pcall(vim.api.nvim_del_augroup_by_name, "jumpWithVirtLineDiags") -- prevent autocmd for repeated jumps
+
+    vim.diagnostic.jump { count = jumpCount }
+
+    local initialVirtTextConf = vim.diagnostic.config().virtual_text
+    vim.diagnostic.config {
+        virtual_text = false,
+        virtual_lines = { current_line = true },
+    }
+
+    vim.defer_fn(function() -- deferred to not trigger by jump itself
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            desc = "User(once): Reset diagnostics virtual lines",
+            once = true,
+            group = vim.api.nvim_create_augroup("jumpWithVirtLineDiags", {}),
+            callback = function()
+                vim.diagnostic.config { virtual_lines = false, virtual_text = initialVirtTextConf }
+            end,
+        })
+    end, 1)
+end
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 -- vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
