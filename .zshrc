@@ -1,6 +1,7 @@
 # Aliases
 alias lsa="ls -al --color"
 alias ls="ls --color"
+alias nf="source ~/.local/scripts/neovim-fzf.sh"
 
 # oh-my-posh prompt
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
