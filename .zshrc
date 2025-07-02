@@ -11,6 +11,14 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# fzf colorscheme
+export FZF_DEFAULT_OPTS="
+    --color=fg:#908caa,bg:-1,hl:#ebbcba
+    --color=fg+:#e0def4,bg+:-1,hl+:#ebbcba
+    --color=border:#403d52,header:#31748f,gutter:#191724
+    --color=spinner:#f6c177,info:#9ccfd8
+    --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -51,6 +59,7 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # auto-notify config
@@ -61,6 +70,5 @@ export AUTO_NOTIFY_EXPIRE_TIME=5000
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
 
 eval "$(fzf --zsh)"
