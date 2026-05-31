@@ -1,3 +1,23 @@
+vim.api.nvim_create_autocmd("User", {
+    pattern = "TSUpdate",
+    callback = function()
+        local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+        parser_configs.lox = {
+            install_info = {
+                url = "https://github.com/ajeetdsouza/tree-sitter-lox",
+                files = { "src/parser.c", "src/scanner.c" },
+            },
+        }
+        parser_configs.gleam = {
+            install_info = {
+                url = "https://github.com/gleam-lang/tree-sitter-gleam",
+                files = { "src/parser.c", "src/scanner.c" },
+                revision = "dae1551a9911b24f41d876c23f2ab05ece0a9d4c",
+            },
+        }
+    end,
+})
+
 return { -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
