@@ -30,4 +30,31 @@
   lg = log --oneline
 [core]
   editor = nvim
-  pager = less -FRSX
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = false
+  syntax-theme = rose-pine
+  plus-style = syntax "#1d2837"
+  plus-emph-style = syntax "#233c4f"
+  minus-style = syntax "#3f2738"
+  minus-emph-style = syntax "#6d3a50"
+  line-numbers-left-style = "#524f67"
+  line-numbers-right-style = "#524f67"
+  line-numbers-minus-style = "#eb6f92"
+  line-numbers-plus-style = "#9ccfd8"
+  line-numbers-zero-style = "#6e6a86"
+  file-style = bold "#c4a7e7"
+  file-decoration-style = none
+  hunk-header-decoration-style = "#403d52" box ul
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
